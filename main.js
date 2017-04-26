@@ -8,10 +8,10 @@ const url = require('url');
 let firstMainWindow;
 let secondMainWindow;
 
-function createWindow(file, shown) {
+function createWindow(file, shown, width, height) {
     let window = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: width,
+        height: height,
         show: shown
     });
 
@@ -25,14 +25,14 @@ function createWindow(file, shown) {
 }
 
 app.on('ready', () => {
-    firstMainWindow = createWindow('index_1.html', true);
+    firstMainWindow = createWindow('index_1.html', true, 400, 200);
     firstMainWindow.on('closed', () => {
         console.log('closing first main window');
         firstMainWindow = null;
     });
 
     setTimeout(()=> {
-        secondMainWindow = createWindow('index_2.html', false);
+        secondMainWindow = createWindow('index_2.html', false, 800, 400);
         secondMainWindow.on('closed', () => {
             console.log('closing second main window');
             secondMainWindow = null;

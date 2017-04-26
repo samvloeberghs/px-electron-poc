@@ -1,31 +1,15 @@
 const packager = require('electron-packager');
-
-const options64 = {
+const options = {
     dir: '.',
     prune: false,
     platform: 'win32',
-    name: 'test app',
+    name: 'testapp',
     out: 'packages',
     overwrite: true,
-    arch: 'x64'
+    arch: ['x64', 'ia32']
 };
 
-const options32 = {
-    dir: '.',
-    prune: false,
-    platform: 'win32',
-    name: 'test app',
-    out: 'packages',
-    overwrite: true,
-    arch: 'ia32'
-};
-
-packager(options32, (err, appPaths) => {
+packager(options, (err, appPaths) => {
    console.log('err', err);
    console.log('appPaths', appPaths);
-});
-
-packager(options64, (err, appPaths) => {
-    console.log('err', err);
-    console.log('appPaths', appPaths);
 });
