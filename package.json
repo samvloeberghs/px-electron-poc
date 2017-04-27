@@ -9,7 +9,8 @@
     "package": "node ./scripts/package",
     "clean:packages": "npm run rimraf -- packages",
     "server": "http-server",
-    "rimraf": "rimraf"
+    "rimraf": "rimraf",
+    "test": "jasmine"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -25,6 +26,7 @@
     "electron": "~1.6.2",
     "electron-packager": "^8.6.0",
     "http-server": "^0.9.0",
+    "jasmine": "^2.6.0",
     "rimraf": "^2.6.1",
     "spectron": "^3.6.2"
   }
