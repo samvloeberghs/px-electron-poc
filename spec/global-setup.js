@@ -1,11 +1,5 @@
-const Application = require('spectron').Application
-const assert = require('assert');
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
+const Application = require('spectron').Application;
 const path = require('path');
-
-chai.should();
-chai.use(chaiAsPromised);
 
 exports.getElectronPath = () => {
     let electronPath = path.join(__dirname, '..', 'node_modules', '.bin', 'electron');
@@ -13,26 +7,28 @@ exports.getElectronPath = () => {
     return electronPath;
 };
 
-exports.setupTimeout = (test) => {
-    test.timeout(process.env.CI ? 30000 : 10000);
+setupTimeout = () => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = process.env.CI ? 30000 : 10000;
 };
 
-exports.startApplication = (options) => {
-    options.path = exports.getElectronPath()
-    if (process.env.CI) options.startTimeout = 30000;
+exports.startApplication = (appPath, cb) => {
 
-    const app = new Application(options);
-    return app.start().then(() => {
-        assert.equal(app.isRunning(), true);
-        chaiAsPromised.transferPromiseness = app.transferPromiseness;
-        return app;
-    })
+    setupTimeout();
+
+    appPath = path.join(process.cwd(), appPath);
+    app = new Application({
+        path: appPath
+    });
+    app.start().then(cb);
+    return app;
 };
 
-exports.stopApplication = (app) => {
+exports.stopApplication = (app, cb) => {
     if (!app || !app.isRunning()) return;
 
     return app.stop().then(() => {
-        assert.equal(app.isRunning(), false);
-    })
+        expect(app.isRunning()).toBeFalsy();
+        app = null;
+        cb();
+    });
 };

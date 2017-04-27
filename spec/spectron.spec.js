@@ -1,29 +1,16 @@
-const Application = require('spectron').Application;
-const assert = require('assert');
-const path = require('path');
 const helpers = require('./global-setup');
-
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
 describe('wait for second window to be accessible', () => {
 
-    const appPath = path.join(process.cwd(), 'packages/testapp-darwin-x64/testapp.app/Contents/MacOS/testapp');
+    const appPath = 'packages/testapp-darwin-x64/testapp.app/Contents/MacOS/testapp';
     let app;
 
     beforeEach((done) => {
-
-        app = new Application({
-            path: appPath
-        });
-        app.start().then(done);
-
+        app = helpers.startApplication(appPath, done);
     });
 
     afterEach((done) => {
-        app.stop().then(() => {
-            app = null;
-            done();
-        });
+        helpers.stopApplication(app, done);
     });
 
     it('should have the correct title', (done) => {
