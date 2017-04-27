@@ -1,12 +1,6 @@
 const Application = require('spectron').Application;
 const path = require('path');
 
-exports.getElectronPath = () => {
-    let electronPath = path.join(__dirname, '..', 'node_modules', '.bin', 'electron');
-    if (process.platform === 'win32') electronPath += '.cmd';
-    return electronPath;
-};
-
 setupTimeout = () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = process.env.CI ? 30000 : 10000;
 };

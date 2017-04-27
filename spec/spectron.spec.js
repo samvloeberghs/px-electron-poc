@@ -2,7 +2,8 @@ const helpers = require('./global-setup');
 
 describe('wait for second window to be accessible', () => {
 
-    const appPath = 'packages/testapp-darwin-x64/testapp.app/Contents/MacOS/testapp';
+    // const appPath = 'packages/testapp-darwin-x64/testapp.app/Contents/MacOS/testapp';
+    const appPath = 'packages/testapp-win32-x64/testapp.exe';
     let app;
 
     beforeEach((done) => {
