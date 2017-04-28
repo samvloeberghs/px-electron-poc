@@ -5,8 +5,12 @@
     <title>Second window</title>
   </head>
   <body>
-    <h1>Hello World! Second window</h1>
+    <h1>2) Hello World! Second window</h1>
     <h2 style="color:green;font-weight:bold">Showing the application!</h2>
+
+    <button id="mybutton" class="mybutton" onclick="document.getElementById('mytextfield').value='Clicked'">Click me!</button>
+    <input type="text" id="mytextfield" class="mytextfield" />
+
     <!-- All of the Node.js APIs are available in this renderer process. -->
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,

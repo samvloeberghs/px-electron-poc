@@ -39,8 +39,8 @@ const startup = () => {
             console.log('showing second main window');
             secondMainWindow.show();
             firstMainWindow.close();
-        }, 3000);
-    }, 3000);
+        }, 2000);
+    }, 2000);
 };
 
 app.on('ready', startup);
@@ -50,8 +50,3 @@ app.on('activate', () => {
         startup();
     }
 });
-
-// cleanup
-setTimeout(() => {
-    app.quit();
-}, 25000);

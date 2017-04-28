@@ -8,7 +8,7 @@
     "prepackage": "npm run clean:packages",
     "package": "node ./scripts/package",
     "clean:packages": "npm run rimraf -- packages",
-    "server": "http-server",
+    "server": "http-server -c-1",
     "rimraf": "rimraf",
     "test": "jasmine"
   },

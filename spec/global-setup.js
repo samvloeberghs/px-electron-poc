@@ -2,7 +2,7 @@ const Application = require('spectron').Application;
 const path = require('path');
 
 setupTimeout = () => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = process.env.CI ? 30000 : 10000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = process.env.CI ? 30000 : 30000;
 };
 
 exports.startApplication = (appPath, cb) => {
